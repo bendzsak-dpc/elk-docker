@@ -111,6 +111,12 @@ RUN mkdir ${KIBANA_HOME} \
  && chown -R kibana:kibana ${KIBANA_HOME} /var/log/kibana
 
 
+ ### Install JDK
+ RUN rm -rf /opt/elasticsearch/jdk/* \
+ && curl -L -O https://corretto.aws/downloads/latest/amazon-corretto-21-aarch64-linux-jdk.tar.gz \
+ && tar xzf amazon-corretto-21-aarch64-linux-jdk.tar.gz -C /opt/elasticsearch/jdk/ --strip-components=1 \
+ && rm -f amazon-corretto-21-aarch64-linux-jdk.tar.gz
+
 ###############################################################################
 #                              START-UP SCRIPTS
 ###############################################################################
